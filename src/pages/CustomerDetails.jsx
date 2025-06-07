@@ -17,7 +17,7 @@ const CustomerDetails = () => {
     if (id) {
       const token = localStorage.getItem("token");
       axios
-        .get(`http://localhost:5000/api/customers/${id}`, {
+        .get(`${import.meta.env.VITE_API_URL}/api/customers/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,13 +48,13 @@ const CustomerDetails = () => {
       const token = localStorage.getItem("token");
       if (id) {
         await axios.put(
-          `http://localhost:5000/api/customers/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/customers/${id}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
         await axios.post(
-          "http://localhost:5000/api/customers",
+          `${import.meta.env.VITE_API_URL}/api/customers`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
